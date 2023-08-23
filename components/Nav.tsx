@@ -7,6 +7,7 @@ import { getCurrentUser } from "@/lib/session";
 import { User } from "next-auth";
 import { signOut } from "next-auth/react";
 import ProfileMenu from "./ProfileMenu";
+import Button from "./Button";
 
 export default async function Nav() {
   const session = await getCurrentUser();
@@ -28,7 +29,9 @@ export default async function Nav() {
         {session?.user ? (
           <>
             <ProfileMenu session={session}/>
-            <Link href="/create-project">Share Work</Link>
+            <Link href="/create-project">
+              <Button title="Share Work" />
+              </Link>
           </>
         ) : (
           <AuthProvider />
